@@ -1,0 +1,346 @@
+html, body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#topnav{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:10;
+    overflow: hidden;
+    text-align: center;
+}
+
+a#left-name{
+    float: left;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#categories{
+    width: 100%;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    position: fixed;
+    top: 70;
+    left: 0;
+    z-index:10;
+    text-align: center;
+}
+
+.container{
+    height: 75px;
+}
+
+#topnav a, a:visited{
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+#topnav a:hover{
+    color:white;
+    background-color: black;
+
+}
+
+#categories a, a:visited{
+    color:white;
+    margin: 5px;
+}
+a.aPhold, a.aPhold:visited{
+    color: black;
+    text-decoration: none;
+    width: 20px;
+}
+
+a.aPhold:hover{
+    width: 20px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    border-radius: 8px;
+}
+
+div#webOfTheDay{
+    height: 75%;
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+div#siteDay{
+    height: 400px;
+    width: 75%;
+    background-color: lightgray;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+div#mostPop{
+    height: 75%;
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+div#sitePop{
+    height: 400px;
+    width: 75%;
+    background-color: lightgray;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+div#highRate{
+    height: 75%;
+    width: 100%;
+    text-align: center;
+}
+
+div#siteHigh{
+    height: 400px;
+    width: 75%;
+    background-color: lightgray;
+    margin: 20px auto;
+    border-radius: 10px;
+}   
+select{
+    width: 20px;
+}
+
+#searchbar{
+    width: 35%;
+    height: 35px;
+    border: 1px solid black;
+    background: lightgray;
+    color: black;
+}
+
+#searchbar:focus {
+    border: 3px solid black;
+    }
+
+button{
+    background: #092532;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    color:white;
+    width: min-content;
+    height: min-content;
+}
+
+button:hover{
+    background: black;
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    width: min-content;
+    height: min-content;
+}
+
+.button{
+    background: #092532;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    color:white;
+    width: min-content;
+    height: min-content;
+}
+
+.button:hover{
+    background: black;
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    width: min-content;
+    height: min-content;
+}
+s
+.registerbox{
+    width: 50%;
+    margin: 0px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.registerbox input {
+    margin: 0px auto;
+    width: 50%;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+  }
+  
+  .registerbox input:focus {
+    border: 2.5px solid black;
+  }
+
+  .loginbox{
+    width: 50%;
+    margin: 0px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+  .loginbox input {
+    margin: 0px auto;
+    width: 50%;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+  }
+  
+  .loginbox input:focus {
+    border: 2.5px solid black;
+  }
+
+  #subBtn{
+    background: #092532;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    color:white;
+  }
+ 
+  #subBtn:hover{
+    background: black;
+    color: white;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.sitebox{
+    width: 50%;
+    margin: 0px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.sitebox input, textarea{
+    margin: 0px auto;
+    width: 50%;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+  }
+  
+  .sitebox .wPhold{
+    width: 20px;
+    padding: 5px 5px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    border-radius: 8px;
+  }
+  .sitebox .wPhold:hover{
+    width: 20px;
+    padding: 5px 5px;
+    color: white;
+    text-decoration: none;
+    background-color: #222831;
+    border-radius: 8px;
+  }
+.reviewbox{
+    width: 50%;
+    margin: 0px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.reviewbox input {
+    margin: 0px auto;
+    width: 50%;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+  }
+  
+.reviewbox textarea{
+    margin: 0px auto;
+    width: 70%;
+    height: 50%;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
+  .reviewbox input:focus {
+    border: 2.5px solid black;
+  }
+
+
+  .editprofile input {
+    margin: 0px auto;
+    width: 50%;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+  }
+
+  .website{
+    height: 400px;
+    width: 75%;
+    background-color: lightgray;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.sitebox button{
+  width: 70px;
+  height: min-content;
+}
+  

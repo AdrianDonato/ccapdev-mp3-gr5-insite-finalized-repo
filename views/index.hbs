@@ -1,0 +1,192 @@
+<html>
+
+    <head>
+        <!-- <link rel="stylesheet" href="/stylesheets/main.css"> -->
+        <title>InSite</title>
+        <script src="jquery.js"></script>
+        <link rel="stylesheet" href="/stylesheets/mainpage.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" size="32x32" href="/images/insite-icon-v3-32x32.png">
+    </head>
+    <body>
+        <nav class = "navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <div class = "container-fluid">
+                <a class="navbar-brand" href="/"><img src = "/images/navbar-logo-micro-v3.png"></a>
+                
+                <form class = "form-inline d-flex my-2 my-lg-0 justify-content-center md-form long-textbar" method="get" action="/websites/search-results">
+                    <div class="lg-form my-0">
+                        <input class="form-control form-control-md ml-3 long-textbar" name = "search" type="text" placeholder ="search for websites..." aria-label="search">
+                        <button href = "/websites/search-results" class="btn btn-outline-light btn-md my-0 ml-sm-2">SEARCH</button>
+                    </div>
+                </form>
+                <!--
+                <div class = "col-xl-2">
+                        <select id = "topCateg">
+                        <option>All Categories</option>
+                        <option>Social Media</option>
+                        <option>E-Commerce</option>
+                        <option>News Sites</option>
+                        <option>Blogs</option>
+                        <option>Informational</option> 
+                        <option>Entertainment</option> 
+                        </select>
+                </div> -->
+                
+                
+                <ul class="navbar-nav">
+                    <li class = "nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            VIEW WEBSITES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/categories/allcategories">All Websites</a></li>
+                            <li><a class="dropdown-item" href="/categories/socialmedia">Social Media</a></li>
+                            <li><a class="dropdown-item" href="/categories/ecommerce">E-Commerce</a></li>
+                            <li><a class="dropdown-item" href="/categories/newssites">News Sites</a></li>
+                            <li><a class="dropdown-item" href="/categories/blogs">Blogs/Focus Sites</a></li>
+                            <li><a class="dropdown-item" href="/categories/informational">Informational</a></li>
+                            <li><a class="dropdown-item" href="/categories/entertainment">Entertainment</a></li>
+                            <li><a class="dropdown-item" href="/categories/utilities">Utilities</a></li>
+                        </ul>
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="/websites/submitsite">SUBMIT A WEBSITE</a>
+                    </li>
+                    <!-- rightoption1: either sign up or account, rightoption2: either log in or log out -->
+                    <li class = "nav-item dropdown">
+                        {{#if loggedin}}
+                        <a class="nav-link dropdown-toggle" href="" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           {{rightoption1}}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="{{url1}}">View Profile</a></li>
+                            {{#if modurl}}
+                            <li><a class="dropdown-item" href="{{modurl}}">{{userRole}} Panel</a></li>
+                            {{/if}}
+                        </ul>
+                        {{else}}
+                            <a class = "nav-link" href="{{url1}}">{{rightoption1}}</a>
+                        {{/if}}
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="{{url2}}">{{rightoption2}}</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {{#with weboftheday}}
+        <!--- web of the day jumbotron -->    
+        <div class="row no-gutter">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="carousel inner">
+                    <div class="carousel-item active">
+                            <img src="{{banner}}" class="img-responsive fit-image">
+                         {{#if reviews}}
+                        <div class="carousel-caption" style="top: 0;">
+                            <div class="row">
+                            
+                            <div class="col text-center">
+                                <div class="bg-dark text-white border border-light" style="width:120px; height:60px; border-radius:5px;">
+                                <span class="p-0">Design <br></span>
+                                <span class="text-white font-weight-bold"><h5>{{avg_designscore}}</h5></span>
+                                </div>
+                            </div>
+                            <div class="col text-center">
+                                <div class="bg-dark text-white border border-light" style="width:120px; height:60px; border-radius:5px;">
+                                <span class="p-0">Usability <br></span>
+                                <span class="text-white font-weight-bold"><h5>{{avg_usabilityscore}}</h5></span>
+                                </div>
+                            </div>
+                            <div class="col text-center">
+                                <div class="bg-dark text-white border border-light" style="width:120px; height:60px; border-radius:5px;">
+                                <span class="p-0">Creativity <br></span>
+                                <span class="text-white font-weight-bold"><h5>{{avg_creativityscore}}</h5></span>
+                                </div>
+                            </div>
+                            <div class="col text-center">
+                                <div class="bg-dark text-white border border-light" style="width:120px; height:60px;border-radius:5px;">
+                                <span class="p-0">Content <br></span>
+                                <span class="text-white font-weight-bold"><h5>{{avg_contentscore}}</h5></span>
+                                </div>
+                            </div>
+                            <div class="col text-center">
+                                <div class="bg-dark text-white border border-light" style="width:120px; height:60px; border-radius:5px;">
+                                <span class="p-0">Trustworthiness <br></span>
+                                <span class="text-white font-weight-bold"><h5>{{avg_trustscore}}</h5></span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                        <div class="carousel-caption">
+                            <div class="wod-header">Website of the Day | {{../currentdate}}</div>
+                            <h2>{{websitename}}</h2>
+                            <a href = "{{websiteurl}}" target="_blank" class="btn btn-outline-light btn-md">Visit Website</a>
+                            <a href = "/websites/websitelist/{{id}}" class="btn btn-outline-light btn-md" >Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>    
+        {{/with}}
+        <div class="row d-flex justify-content-center pt-5">
+            <h3 class="pl-2 pr-2 font-weight-bold" style="border-radius: 2px;">Newly Added Websites</h3>
+        </div>
+        <div class="latest-list row d-flex justify-content-center pt-3">
+            <div class="card-deck">    
+                {{#each newwebsites}}
+                <div class="card text-center border border-0" style="width: 17rem;">
+                    <img class = "mx-auto" id="pic" src="{{icon}}">
+                    <div class = "card-body">
+                        <h5 class="card-title card-web-name">{{websitename}}</h5>
+                        <p class="card-text card-creator-name">{{creator}}</p>
+                         <div class="taglist"> 
+                            {{#each tags}}
+                                <span class="badge badge-pill badge-info font-weight-light">{{this}}</span>
+                            {{/each}}
+                        </div>
+                        <p class="card-text card-web-categ">{{category}}</p>
+                        <a href="{{websiteurl}}" target="_blank" class="btn btn-success btn-sm">Visit Website</a>
+                        <a href="/websites/websitelist/{{id}}" class="btn btn-dark btn-sm" data-id = "{{id}}">Learn More</a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>    
+        </div>
+        <div class="row d-flex justify-content-center pt-5">
+            <h3 class="pl-2 pr-2 font-weight-bold" style="border-radius: 2px;">Highest Rated Websites</h3>
+        </div>
+        <div class="highest-list row d-flex justify-content-center py-3">
+            <div class="card-deck">
+                {{#each topwebsites}}
+                <div class="card text-center border border-0" style="width: 17rem;">
+                    <img class = "mx-auto" id="pic" src="{{icon}}">
+                    <div class = "card-body">
+                        <h5 class="card-title card-web-name">{{websitename}}</h5>
+                        <p class="card-text card-creator-name">{{creator}}</p>
+                        <div class="taglist"> 
+                            {{#each tags}}
+                                <span class="badge badge-pill badge-info font-weight-light">{{this}}</span>
+                            {{/each}}
+                        </div>
+                        <p class="card-text card-web-categ">{{category}}</p>
+                        <a href="{{websiteurl}}" target="_blank" class="btn btn-success btn-sm ">Visit Website</a>
+                        <a href="/websites/websitelist/{{id}}" class="btn btn-dark btn-sm " data-id = "{{id}}">Learn More</a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>    
+        </div>
+        <nav class = "footer navbar navbar-expand-md navbar-dark bg-dark mt-5">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">ABOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </body>
+</html>

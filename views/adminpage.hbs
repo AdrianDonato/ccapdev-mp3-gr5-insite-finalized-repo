@@ -1,0 +1,195 @@
+<html>
+    <head>
+        
+        <script src="/jquery.js"></script>
+        
+        <link rel="stylesheet" href="/stylesheets/adminpage.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" size="32x32" href="/images/insite-icon-v3-32x32.png">
+    </head>
+
+    <body>
+        <nav class = "navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <div class = "container-fluid">
+                <a class="navbar-brand" href="/"><img src = "/images/navbar-logo-micro-v3.png"></a>
+                
+               <form class = "form-inline d-flex my-2 my-lg-0 justify-content-center md-form long-textbar" method="get" action="/websites/search-results">
+                    <div class="lg-form my-0">
+                        <input class="form-control form-control-md ml-3 long-textbar" name = "search" type="text" placeholder ="search for websites..." aria-label="search">
+                        <button href = "/websites/search-results" class="btn btn-outline-light btn-md my-0 ml-sm-2">SEARCH</button>
+                    </div>
+                </form>
+                <!--
+                <div class = "col-xl-2">
+                        <select id = "topCateg">
+                        <option>All Categories</option>
+                        <option>Social Media</option>
+                        <option>E-Commerce</option>
+                        <option>News Sites</option>
+                        <option>Blogs</option>
+                        <option>Informational</option> 
+                        <option>Entertainment</option> 
+                        </select>
+                </div> -->
+                
+                
+                <ul class="navbar-nav">
+                    <li class = "nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            VIEW WEBSITES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/categories/allcategories">All Websites</a></li>
+                            <li><a class="dropdown-item" href="/categories/socialmedia">Social Media</a></li>
+                            <li><a class="dropdown-item" href="/categories/ecommerce">E-Commerce</a></li>
+                            <li><a class="dropdown-item" href="/categories/newssites">News Sites</a></li>
+                            <li><a class="dropdown-item" href="/categories/blogs">Blogs/Focus Sites</a></li>
+                            <li><a class="dropdown-item" href="/categories/informational">Informational</a></li>
+                            <li><a class="dropdown-item" href="/categories/entertainment">Entertainment</a></li>
+                            <li><a class="dropdown-item" href="/categories/utilities">Utilities</a></li>
+                        </ul>
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="/websites/submitsite">SUBMIT A WEBSITE</a>
+                    </li>
+                    <!-- rightoption1: either sign up or account, rightoption2: either log in or log out -->
+                     <li class = "nav-item dropdown">
+                        {{#if loggedin}}
+                        <a class="nav-link dropdown-toggle" href="" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           {{rightoption1}}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="{{url1}}">View Profile</a></li>
+                            {{#if modurl}}
+                            <li><a class="dropdown-item" href="{{modurl}}">{{userRole}} Panel</a></li>
+                            {{/if}}
+                        </ul>
+                        {{else}}
+                            <a class = "nav-link" href="{{url1}}">{{rightoption1}}</a>
+                        {{/if}}
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="{{url2}}">{{rightoption2}}</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class = "content">
+            <div class = "container">
+                <h2 class="display-4 text-center">{{userRole}} Page</h2>
+                <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                    <h3 class="font-weight-light text-center bg-dark text-white">General Information</h3>
+                    <div class="mx-auto"><img src="{{moduser.usericon}}" id="pic" alt="profile-image"></div>
+                    <div class="card-body">
+                        <ul class="list-group p-0">
+                            <li class="list-group-item text-center"><span class="font-weight-bold">First Name: <br></span>{{moduser.firstname}}</li>
+                            <li class="list-group-item text-center"><span class="font-weight-bold">Last Name: <br></span>{{moduser.lastname}}</li>
+                            <li class="list-group-item text-center"><span class="font-weight-bold">Username: <br></span>{{moduser.username}}</li>
+                            <li class="list-group-item text-center"><span class="font-weight-bold">Email: <br></span>{{moduser.email}}</li>
+                        </ul><br>
+                        <div class="text-center">
+                        <a href="/users/user-list/{{moduser.username}}/editprofile" class="btn btn-primary btn-sm">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="col-lg-8 col-xl-8">
+                <div class="row-lg-8 row-xl-8">
+                <div class="card-box border border-secondary">
+                    <h3 class="font-weight-light bg-dark text-white text-center">Websites</h3>
+                    {{!-- {{#if isAdmin}} --}}
+                    {{#if isAdmin}}
+                    <ul class="list-group"> 
+                    {{#each site}}
+                    <li class="list-group-item">
+                        <div><a href="/websites/websitelist/{{id}}">{{websitename}}</a></div>
+                        <div class="text-right">
+                        <div class="dropdown">
+                        <button class="dropbtn btn btn-sm btn-success text-white">Actions</button>
+                            <div class="dropdown-content">
+                            <a href="/websites/websitelist/{{id}}/edit">Edit Website</a>
+                                <a href="/websites/websitelist/{{id}}/delete">Delete Website</a>
+                                {{#if published}}
+                                    <a href="/websites/websitelist/{{id}}/publish/unpublish">Unpublish Website</a>
+                                {{else}}
+                                    <a href="/websites/websitelist/{{id}}/publish/republish">Republish Website</a>
+                                {{/if}}
+                            <a href="/websites/weboftheday/{{id}}">Set as Website of the Day</a>       
+                            
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                    </ul>
+                    {{/if}}
+                    {{#if isMod}}
+                    <ul class="list-group">
+                    {{#each site}}
+                    <li class="list-group-item">
+                        <div><a href="/websites/websitelist/{{id}}">{{websitename}}</a></div>
+                        <div class="text-right">
+                        <div class="dropdown">
+                        <button class="dropbtn btn btn-sm btn-success text-white">Actions</button>
+                            <div class="dropdown-content">
+                            <a href="/websites/websitelist/{{id}}/edit">Edit Website</a>
+                            {{#if published}}
+                            <a href="/websites/websitelist/{{id}}/publish/unpublish">Unpublish Website</a>
+                            {{else}}
+                            <a href="/websites/websitelist/{{id}}/publish/republish">Republish Website</a>
+                            {{/if}}
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                    </ul>
+                    {{/if}}
+                </div>
+                </div>
+                {{#if isAdmin}} 
+                <div class="row-lg-8 row-xl-8">
+                <div class="card-box border border-secondary">
+                    <h3 class="font-weight-light bg-dark text-white text-center">Users</h3>                    
+                  
+                    <ul class="list-group">
+                    {{#each user}}
+                    <li class="list-group-item">
+                        <div><a href="/users/user-list/{{username}}">{{username}}</a></div>
+                        <div class="text-right">
+                        <div class="dropdown">
+                        <button class="dropbtn btn btn-sm btn-success text-white">Actions</button>
+                            <div class="dropdown-content">
+                            <a href="/users/user-list/{{username}}/setmoderator">Set as Moderator</a>
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                    </ul>
+                   
+                </div>
+                </div>
+                {{/if}} 
+                </div>   
+                </div>
+            </div> 
+        </div>
+        <nav class = "footer navbar navbar-expand-md navbar-dark bg-dark mt-5">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">ABOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </body>
+</html>

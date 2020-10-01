@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>Register | InSite</title>
+        <script src="/jquery.js"></script>
+        <link rel="stylesheet" href="/stylesheets/register.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" size="32x32" href="/images/insite-icon-v3-32x32.png">
+    </head>
+    <body>
+         <nav class = "navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <div class = "container-fluid">
+                <a class="navbar-brand" href="/"><img src = "/images/navbar-logo-micro-v3.png"></a>
+                
+               <form class = "form-inline d-flex my-2 my-lg-0 justify-content-center md-form long-textbar" method="get" action="/websites/search-results">
+                    <div class="lg-form my-0">
+                        <input class="form-control form-control-md ml-3 long-textbar" name = "search" type="text" placeholder ="search for websites..." aria-label="search">
+                        <button href = "/websites/search-results" class="btn btn-outline-light btn-md my-0 ml-sm-2">SEARCH</button>
+                    </div>
+                </form>
+                <!--
+                <div class = "col-xl-2">
+                        <select id = "topCateg">
+                        <option>All Categories</option>
+                        <option>Social Media</option>
+                        <option>E-Commerce</option>
+                        <option>News Sites</option>
+                        <option>Blogs</option>
+                        <option>Informational</option> 
+                        <option>Entertainment</option> 
+                        </select>
+                </div> -->
+                
+                
+                <ul class="navbar-nav">
+                    <li class = "nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">
+                            VIEW WEBSITES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/categories/allcategories">All Websites</a></li>
+                            <li><a class="dropdown-item" href="/categories/socialmedia">Social Media</a></li>
+                            <li><a class="dropdown-item" href="/categories/ecommerce">E-Commerce</a></li>
+                            <li><a class="dropdown-item" href="/categories/newssites">News Sites</a></li>
+                            <li><a class="dropdown-item" href="/categories/blogs">Blogs/Focus Sites</a></li>
+                            <li><a class="dropdown-item" href="/categories/informational">Informational</a></li>
+                            <li><a class="dropdown-item" href="/categories/entertainment">Entertainment</a></li>
+                            <li><a class="dropdown-item" href="/categories/utilities">Utilities</a></li>
+                        </ul>
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="/websites/submitsite">SUBMIT A WEBSITE</a>
+                    </li>
+                   
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="/users/register">SIGN UP</a>
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="/users/login">LOG IN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+        <div class="signup-form">
+    <form action="/users/register/submit" method="post" enctype="multipart/form-data">
+		<h2 class="display-4 text-center">Register</h2>
+		<p class="hint-text">Create your account.</p>
+        <div class="text-center">
+            {{#if error}}
+            {{error}}
+            {{/if}}       
+        </div>
+         <div class="form-group">
+             <label for="profPic">Profile Picture</label>
+        	<input type="file" class="form-control" name="profPic" placeholder="Profile Picture" required="required">
+        </div>
+        <div class="form-group">
+			<div class="row">
+				<div class="col"><input type="text" class="form-control" name="fname" placeholder="First Name"></div>
+				<div class="col"><input type="text" class="form-control" name="lname" placeholder="Last Name"></div>
+			</div>        	
+        </div>
+        <div class="form-group">
+        	<input type="email" class="form-control" name="em" placeholder="Email" required="required">
+        </div>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="un" placeholder="Username" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="pw" placeholder="Password" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="vpw" placeholder="Verify Password" required="required">
+        </div>        
+		<div class="form-group">
+            <button type="submit" value="register" class="btn btn-primary btn-block">Register Now</button>
+        </div>
+    </form>
+	<div class="text-center">Already have an account? <a href="loginpage">Log in</a></div>
+    </div>   
+    </body>
+    <nav class = "footer navbar navbar-expand-md navbar-dark bg-dark mt-5">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">ABOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+</html>
